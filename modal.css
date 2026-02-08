@@ -1,0 +1,86 @@
+:root {
+	/*Está definindo estilos para a raiz do sistema, que no caso é HTML */
+	--primary-color: #29335c; /*Criando variaveis no css, que serao usadas ao longo do codigo */
+	--light-primary: #0951a9;
+	--ligthest-color: #e9ebd5;
+	--secondary-color: #774936;
+	--light-secondary: #c08972;
+}
+
+#modal-overlay {
+	display: flex;
+	position: fixed; /* position-> propriedade que permite ajustar a posicao do elemento. fixed, que o elemento fique fixo na pagina */
+	top: 0; /* Top e left sao propriedades que definem o position acima*/
+	left: 0;
+	width: 100vw;
+	height: 100dvh;
+	justify-content: center;
+	align-items: center;
+	/* visibility: visible; */
+}
+.overlay{
+	visibility: hidden; /* A classe tem menos importancia que o id, por isso sera responsavel para esconder o modal-overlay
+ A classe open vai ser criada no css e chamada com o o javascript pelo id da tag modal-overlay*/
+	transition: all 0.3s ease; /*Transiçao aplicada a todos, de 0.3 segundos e suave (ease) */ 
+	opacity: 0; /*Essa transiçao fica suave ate o opacity 1 abaixo */ 
+}
+
+.open-overlay {
+	visibility: visible;
+	opacity: 1; /*Fim da transicao do modal-overlay */ 
+}
+
+#modal-background {
+	background-color: var(--light-primary);
+	width: 100%;
+	height: 100%;
+	position: absolute; /* O position absolute se baseia em funcao do position
+    mais proximo dele, no caso, o position fixed do modal-overlay */
+	z-index: 0; /* é o padrao do css.  todos estilos vem com essa configuracao
+    z-index 0 significa que os estilos estao no mesmo plano */
+	opacity: 0.4; /* por padrao a opacidade é 1. quanto menor que 1, mais transparente */
+}
+
+#modal-container {
+	z-index: 1; /* z-index: 1 significa que este elemento está num outro plano,
+    que sobrepoe o plano do z-index: 0. Se colocasse z-index: -1, despareceria, ja que o 0
+    fica acima do -1 */
+	background-color: var(--ligthest-color);
+	padding: 1rem 3rem;
+	border-radius: 10px;
+}
+#movie-title {
+    padding: 1rem 0;
+}
+
+#modal-body {
+    display: flex;
+	justify-content: center;
+	padding: 1rem 0;
+}
+#movie-poster {
+    border-radius: 5px;
+}
+
+#movie-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* 1 unidade de espaco para as bordas do elemento (em cima e em baixo)
+    e 2 unidades de espaço para o conteudo */
+    max-width: 300px;
+		padding-left: 1rem;
+}
+
+button#add-to-list {
+	border: solid var(--primary-color);
+	border-radius: 10px;
+	width: 100%;
+	font-weight: bold;
+    box-shadow: 2px 2px 10px #000;
+}
+
+button#add-to-list:hover,
+button#add-to-list:focus {
+	background-color: var(--light-secondary);
+    color: var(--ligthest-color);
+}
